@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes | Gestion académique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Geist", "ui-sans-serif", "sans-serif"] },
+            colors: { ink: "#18181b", muted: "#71717a", line: "#e4e4e7", canvas: "#fafafa" }
+          }
+        }
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="min-h-screen bg-canvas font-sans text-ink antialiased">
+    <div id="app" class="min-h-screen"></div>
+    <div id="toast" class="pointer-events-none fixed bottom-6 left-1/2 z-50 -translate-x-1/2 translate-y-4 rounded-lg bg-ink px-4 py-3 text-sm text-white opacity-0 shadow-lg transition-all"></div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="/app.js?v=6"></script>
+  </body>
+</html>
