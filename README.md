@@ -56,7 +56,7 @@ cp .env.example .env
 ### 3. Ajouter les données de démonstration
 
 ```bash
-python3 -m backend.app.seed
+python3 -m métier.app.seed
 ```
 
 Les comptes de démonstration sont prévus dans le seed :
@@ -69,7 +69,7 @@ Après une inscription, le compte reste en attente jusqu'à sa validation par un
 ### 4. Lancer l'application
 
 ```bash
-uvicorn backend.app.main:app --reload
+uvicorn métier.app.main:app --reload
 ```
 
 Ouvrir <http://localhost:8000>.

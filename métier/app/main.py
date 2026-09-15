@@ -132,5 +132,5 @@ def decide_registration(request_id: int, decision: str, db: Session = Depends(ge
     return request
 
 
-frontend_dir = Path(__file__).resolve().parents[2] / "frontend"
-app.mount("/", StaticFiles(directory=frontend_dir, html=True), name="frontend")
+client_dir = Path(__file__).resolve().parents[2] / "client"
+app.mount("/", StaticFiles(directory=client_dir, html=True), name="client")
