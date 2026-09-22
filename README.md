@@ -69,10 +69,50 @@ Après une inscription, le compte reste en attente jusqu'à sa validation par un
 ### 4. Lancer l'application
 
 ```bash
-uvicorn métier.app.main:app --reload
+uvicorn métier.app.main:app --host 0.0.0.0 --port 8000
 ```
 
 Ouvrir <http://localhost:8000>.
+
+## Déploiement sur trois machines virtuelles
+
+Les adresses réseau utilisées sont les suivantes :
+
+| VM | Adresse | Rôle |
+| --- | --- | --- |
+| Frontend | `172.16.0.10` / `9.205.104.14` | Fichiers HTML, CSS, JavaScript et reverse proxy Nginx |
+| Backend | `172.16.1.4` | FastAPI sur le port `8000` |
+| Base de données | `172.16.2.4` | PostgreSQL sur le port `5432` |
+
+### VM base de données
+
+PostgreSQL doit écouter sur le réseau privé et autoriser l'adresse privée du backend :
+
+- `listen_addresses = '172.16.2.4'` dans `postgresql.conf`
+- Une règle dans `pg_hba.conf` autorisant `172.16.1.4/32` pour `notes_db`
+- Le pare-feu doit autoriser TCP `5432` depuis `172.16.1.4` uniquement
+
+### VM backend
+
+Copier `.env.example` en `.env`, puis démarrer le backend avec :
+
+```bash
+DATABASE_URL=postgresql+psycopg://notes_user:notes_password@172.16.2.4:5432/notes_db
+uvicorn métier.app.main:app --host 0.0.0.0 --port 8000
+```
+
+Le pare-feu du backend doit autoriser TCP `8000` depuis `172.16.0.10` uniquement.
+
+### VM frontend
+
+Installer Nginx, copier le contenu de `client/` dans `/var/www/notes/client`, puis installer
+`deploiement/frontend-nginx.conf` dans `/etc/nginx/sites-available/notes` et l'activer.
+Le proxy transmet `/api` vers `http://172.16.1.4:8000`, tandis que les utilisateurs
+accèdent au frontend via `http://9.205.104.14`.
+
+Le frontend utilise `/api` par défaut : les appels restent donc sur le même domaine public
+et Nginx les relaie vers le backend privé. Pour un autre routage, définir
+`window.API_BASE_URL` avant `client/app.js`.
 
 ## Ce que tu dois faire dans PostgreSQL
 

@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from sqlalchemy import select, text
 from sqlalchemy.orm import Session, joinedload
 
-from .database import Base, engine, get_db
+from .database import Base, engine, get_db, settings
 from .models import Course, Grade, RegistrationRequest, RequestStatus, User, UserRole
 from .schemas import CourseResponse, GradeCreate, GradeResponse, GradeUpdate, LoginRequest, LoginResponse, RegistrationCreate, RegistrationResponse, UserSummary
 
@@ -14,7 +14,12 @@ Base.metadata.create_all(bind=engine)
 with engine.begin() as connection:
     connection.execute(text("ALTER TABLE registration_requests ADD COLUMN IF NOT EXISTS password_hash VARCHAR(255)"))
 app = FastAPI(title="Notes API", version="1.0.0")
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[origin.strip() for origin in settings.cors_origins.split(",") if origin.strip()],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/api/health")

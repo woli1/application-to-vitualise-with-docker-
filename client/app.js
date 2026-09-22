@@ -1,4 +1,5 @@
 const state = { screen: "login", role: null, user: null, studentId: 1, courseId: null, grades: [], courses: [], students: [], requests: [], courseGrades: [] };
+const API_BASE_URL = window.API_BASE_URL || "/api";
 
 const demoGrades = [
   { id: 1, course: "Informatique 101", value: 18, graded_on: "2026-09-12" },
@@ -20,7 +21,7 @@ const demoRequests = [
 ];
 
 async function api(path, options = {}) {
-  const response = await fetch(`/api${path}`, { headers: { "Content-Type": "application/json" }, ...options });
+  const response = await fetch(`${API_BASE_URL}${path}`, { headers: { "Content-Type": "application/json" }, ...options });
   if (!response.ok) {
     const body = await response.json();
     const detail = Array.isArray(body.detail) ? body.detail.map((item) => item.msg).join(" ") : body.detail;

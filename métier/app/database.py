@@ -6,8 +6,9 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
 
 class Settings(BaseSettings):
-    database_url: str = "postgresql+psycopg://notes_user:notes_password@localhost:5432/notes_db"
+    database_url: str = "postgresql+psycopg://notes_user:notes_password@172.16.2.4:5432/notes_db"
     app_env: str = "development"
+    cors_origins: str = "http://172.16.0.10,http://9.205.104.14"
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
