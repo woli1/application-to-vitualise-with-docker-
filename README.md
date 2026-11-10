@@ -74,6 +74,26 @@ uvicorn métier.app.main:app --host 0.0.0.0 --port 8000
 
 Ouvrir <http://localhost:8000>.
 
+## Injection de charge avec JMeter
+
+Les livrables de la mesure demandée sont dans le dossier [charge/](charge/).
+Le plan reproduit le parcours étudiant en deux requêtes : connexion puis
+consultation des notes. Il contient un gestionnaire de cookies, un fichier de
+20 comptes, un temps de réflexion et des assertions sur les réponses.
+
+Après le démarrage Docker, préparer les comptes :
+
+```bash
+docker compose exec backend python -m métier.app.seed
+docker compose exec backend python /charge/seed_load_accounts.py
+```
+
+Puis suivre [charge/README.md](charge/README.md) et
+[charge/etalonnage.md](charge/etalonnage.md) pour exécuter les paliers
+`1, 5, 10, 25, 50, 100` utilisateurs. Les résultats bruts doivent être
+conservés dans `charge/resultats/` et reportés dans
+[charge/rapport.md](charge/rapport.md).
+
 ## Déploiement sur trois machines virtuelles
 
 Les adresses réseau utilisées sont les suivantes :

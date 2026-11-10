@@ -1,0 +1,35 @@
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(80) NOT NULL,
+    last_name VARCHAR(80) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role VARCHAR(20) NOT NULL DEFAULT 'student',
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS courses (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(120) UNIQUE NOT NULL,
+    teacher_id INTEGER REFERENCES users(id) ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS grades (
+    id SERIAL PRIMARY KEY,
+    student_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    course_id INTEGER NOT NULL REFERENCES courses(id) ON DELETE CASCADE,
+    value NUMERIC(4, 2) NOT NULL CHECK (value >= 0 AND value <= 20),
+    graded_on DATE NOT NULL DEFAULT CURRENT_DATE
+);
+
+CREATE TABLE IF NOT EXISTS registration_requests (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(80) NOT NULL,
+    last_name VARCHAR(80) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    requested_role VARCHAR(20) NOT NULL DEFAULT 'student',
+    password_hash VARCHAR(255),
+    status VARCHAR(20) NOT NULL DEFAULT 'pending',
+    requested_at TIMESTAMP NOT NULL DEFAULT NOW()
+);

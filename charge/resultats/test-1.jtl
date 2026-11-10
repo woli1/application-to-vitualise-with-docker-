@@ -1,0 +1,7 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1794312829674,126,POST /api/auth/login,200,OK,Montée par paliers 1-1,text,true,,258,235,1,1,http://localhost/api/auth/login,126,0,34
+1794312830878,44,GET /api/students/{id}/grades,200,OK,Montée par paliers 1-1,text,true,,241,135,1,1,http://localhost/api/students/1/grades,44,0,0
+1794315440287,331,POST /api/auth/login,200,OK,Montée par paliers 1-1,text,true,,258,235,1,1,http://localhost/api/auth/login,331,0,15
+1794315441745,75,GET /api/students/{id}/grades,200,OK,Montée par paliers 1-1,text,true,,241,135,1,1,http://localhost/api/students/1/grades,75,0,0
+1794315504441,120,POST /api/auth/login,200,OK,Montée par paliers 1-1,text,true,,258,235,1,1,http://localhost/api/auth/login,120,0,96
+1794315505598,23,GET /api/students/{id}/grades,200,OK,Montée par paliers 1-1,text,true,,241,135,1,1,http://localhost/api/students/1/grades,23,0,0

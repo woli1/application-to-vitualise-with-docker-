@@ -1,0 +1,21 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1794315540756,46,POST /api/auth/login,200,OK,Montée par paliers 1-1,text,true,,258,235,1,1,http://localhost/api/auth/login,45,0,17
+1794315541859,27,GET /api/students/{id}/grades,200,OK,Montée par paliers 1-1,text,true,,241,135,1,1,http://localhost/api/students/1/grades,27,0,0
+1794315543683,26,POST /api/auth/login,200,OK,Montée par paliers 1-2,text,true,,258,235,1,1,http://localhost/api/auth/login,26,0,2
+1794315544712,22,GET /api/students/{id}/grades,200,OK,Montée par paliers 1-2,text,true,,241,135,1,1,http://localhost/api/students/1/grades,22,0,0
+1794315546679,31,POST /api/auth/login,200,OK,Montée par paliers 1-3,text,true,,258,235,1,1,http://localhost/api/auth/login,31,0,3
+1794315547714,23,GET /api/students/{id}/grades,200,OK,Montée par paliers 1-3,text,true,,241,135,1,1,http://localhost/api/students/1/grades,23,0,0
+1794315549678,27,POST /api/auth/login,200,OK,Montée par paliers 1-4,text,true,,258,235,1,1,http://localhost/api/auth/login,27,0,2
+1794315550710,19,GET /api/students/{id}/grades,200,OK,Montée par paliers 1-4,text,true,,241,135,1,1,http://localhost/api/students/1/grades,18,0,0
+1794315552672,6,POST /api/auth/login,200,OK,Montée par paliers 1-5,text,true,,258,235,1,1,http://localhost/api/auth/login,6,0,1
+1794315553681,23,GET /api/students/{id}/grades,200,OK,Montée par paliers 1-5,text,true,,241,135,1,1,http://localhost/api/students/1/grades,23,0,0
+1794315555679,21,POST /api/auth/login,200,OK,Montée par paliers 1-6,text,true,,258,235,1,1,http://localhost/api/auth/login,21,0,2
+1794315556702,29,GET /api/students/{id}/grades,200,OK,Montée par paliers 1-6,text,true,,241,135,1,1,http://localhost/api/students/1/grades,29,0,0
+1794315558675,29,POST /api/auth/login,200,OK,Montée par paliers 1-7,text,true,,258,235,1,1,http://localhost/api/auth/login,29,0,3
+1794315559707,24,GET /api/students/{id}/grades,200,OK,Montée par paliers 1-7,text,true,,241,135,1,1,http://localhost/api/students/1/grades,23,0,0
+1794315561672,26,POST /api/auth/login,200,OK,Montée par paliers 1-8,text,true,,258,235,1,1,http://localhost/api/auth/login,26,0,2
+1794315562702,26,GET /api/students/{id}/grades,200,OK,Montée par paliers 1-8,text,true,,241,135,1,1,http://localhost/api/students/1/grades,25,0,0
+1794315564673,28,POST /api/auth/login,200,OK,Montée par paliers 1-9,text,true,,258,235,1,1,http://localhost/api/auth/login,27,0,3
+1794315565706,24,GET /api/students/{id}/grades,200,OK,Montée par paliers 1-9,text,true,,241,135,1,1,http://localhost/api/students/1/grades,24,0,0
+1794315567671,27,POST /api/auth/login,200,OK,Montée par paliers 1-10,text,true,,259,235,1,1,http://localhost/api/auth/login,26,0,3
+1794315568702,5,GET /api/students/{id}/grades,200,OK,Montée par paliers 1-10,text,true,,241,135,1,1,http://localhost/api/students/1/grades,5,0,0
